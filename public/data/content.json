@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "tagline": "Finance Simplified for You",
+    "titlePrefix": "Empowering Your",
+    "titleHighlight": "Financial Future",
+    "description": "Experience a new era of banking with our premium, secure, and intelligent financial solutions tailored for your growth.",
+    "primaryButtonText": "Explore Products",
+    "secondaryButtonText": "Contact Us"
+  },
+  "featuredPost": {
+    "enabled": true,
+    "title": "New Gold Loan Rates!",
+    "badge": "NEW",
+    "content": "Get the best value for your gold with our updated interest rates starting at just 8.5% p.a.",
+    "linkText": "Learn More",
+    "linkUrl": "/loans"
+  },
+  "stats": [
+    {
+      "id": "1",
+      "value": "$500M+",
+      "label": "Processed"
+    },
+    {
+      "id": "2",
+      "value": "50k+",
+      "label": "Happy Users"
+    },
+    {
+      "id": "3",
+      "value": "99.9%",
+      "label": "Uptime"
+    },
+    {
+      "id": "4",
+      "value": "24/7",
+      "label": "Support"
+    }
+  ],
+  "contactInfo": {
+    "email": "support@primefinancehub.com",
+    "phone": "+91 1234567890",
+    "address": "Mumbai, Maharashtra, India",
+    "hours": "Mon - Sat: 9 AM - 6 PM",
+    "socials": {
+      "facebook": "#",
+      "twitter": "#",
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "copyrightText": "© 2026 Prime Finance Hub. All rights reserved."
+  }
+}
