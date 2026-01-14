@@ -14,12 +14,7 @@ interface FeaturedPostProps {
     };
 }
 
-import LeadCaptureModal from '@/components/LeadCaptureModal';
-import { useState } from 'react';
-
 export default function FeaturedPostSection({ post }: FeaturedPostProps) {
-    const [showModal, setShowModal] = useState(false);
-
     if (!post?.enabled) return null;
 
     return (
@@ -44,19 +39,13 @@ export default function FeaturedPostSection({ post }: FeaturedPostProps) {
                     </p>
                 </div>
 
-                <button
-                    onClick={() => setShowModal(true)}
-                    className="btn-gradient px-8 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-emerald-500/10 whitespace-nowrap hover:scale-105 transition-transform"
+                <Link
+                    href={post.linkUrl || '#'}
+                    className="btn-gradient px-8 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-emerald-500/10 whitespace-nowrap"
                 >
                     {post.linkText || 'Learn More'} <ArrowRight size={18} />
-                </button>
+                </Link>
             </div>
-
-            <LeadCaptureModal
-                isOpen={showModal}
-                onClose={() => setShowModal(false)}
-                triggerUrl={post.linkUrl}
-            />
         </section>
     );
 }

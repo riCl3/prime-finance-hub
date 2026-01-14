@@ -13,8 +13,7 @@ export default function AdminSidebar() {
         { id: 'services', label: 'Services', icon: Shield },
         { id: 'content', label: 'Hero Content', icon: FileText },
         { id: 'featured', label: 'Featured Post', icon: Star },
-        { id: 'leads', label: 'Leads', icon: Contact },
-        { id: 'contact', label: 'Contact Info', icon: Settings },
+        { id: 'contact', label: 'Contact Info', icon: Contact },
         { id: 'settings', label: 'Settings', icon: Settings },
     ];
 

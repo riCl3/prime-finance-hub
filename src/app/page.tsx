@@ -6,7 +6,6 @@ import Service from "@/models/Service";
 
 import Hero from "@/components/home/Hero";
 import FeaturedPostSection from "@/components/home/FeaturedPostSection";
-import Footer from "@/components/Footer";
 import fs from 'fs';
 import path from 'path';
 
@@ -122,7 +121,20 @@ export default async function Home() {
         </section>
       </main>
 
-      <Footer />
+      {/* Footer */}
+      <footer className="py-12 border-t border-white/10 bg-[#0B1120] relative z-10">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded bg-gradient-to-br from-emerald-500 to-cyan-500 flex items-center justify-center">
+              <span className="text-white font-bold text-xs">P</span>
+            </div>
+            <span className="text-lg font-bold text-white">Prime Finance Hub</span>
+          </div>
+          <div className="text-slate-500 text-sm">
+            &copy; {new Date().getFullYear()} Prime Finance Hub. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

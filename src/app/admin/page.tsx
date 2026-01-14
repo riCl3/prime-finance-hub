@@ -2,7 +2,6 @@ import ServiceManager from '@/components/admin/ServiceManager';
 import HeroEditor from '@/components/admin/HeroEditor';
 import FeaturedPostEditor from '@/components/admin/FeaturedPostEditor';
 import ContactEditor from '@/components/admin/ContactEditor';
-import LeadManager from '@/components/admin/LeadManager';
 import dbConnect from '@/lib/db';
 import Service from '@/models/Service';
 import Inquiry from '@/models/Inquiry';
@@ -94,8 +93,6 @@ export default async function AdminPage({
             {tab === 'content' && <HeroEditor />}
 
             {tab === 'featured' && <FeaturedPostEditor />}
-
-            {tab === 'leads' && <LeadManager />}
 
             {tab === 'contact' && <ContactEditor />}
 
