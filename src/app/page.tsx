@@ -22,14 +22,19 @@ async function getContent() {
 }
 
 async function getProducts() {
-  await dbConnect();
-  const products = await Service.find({}).sort({ createdAt: -1 }).lean();
-  return products.map(p => ({
-    ...p,
-    _id: p._id.toString(),
-    createdAt: p.createdAt?.toISOString(),
-    updatedAt: p.updatedAt?.toISOString()
-  }));
+  try {
+    await dbConnect();
+    const products = await Service.find({}).sort({ createdAt: -1 }).lean();
+    return products.map(p => ({
+      ...p,
+      _id: p._id.toString(),
+      createdAt: p.createdAt?.toISOString(),
+      updatedAt: p.updatedAt?.toISOString()
+    }));
+  } catch (error) {
+    console.error('Failed to fetch products (DB Connection Error):', error);
+    return [];
+  }
 }
 
 export default async function Home() {

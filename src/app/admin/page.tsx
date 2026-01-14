@@ -11,14 +11,19 @@ import { LayoutDashboard, Users, ArrowUpRight, DollarSign } from 'lucide-react';
 export const dynamic = 'force-dynamic';
 
 async function getServices() {
-    await dbConnect();
-    const services = await Service.find({}).sort({ createdAt: -1 }).lean();
-    return services.map(s => ({
-        ...s,
-        _id: s._id.toString(),
-        createdAt: s.createdAt?.toISOString(),
-        updatedAt: s.updatedAt?.toISOString()
-    }));
+    try {
+        await dbConnect();
+        const services = await Service.find({}).sort({ createdAt: -1 }).lean();
+        return services.map(s => ({
+            ...s,
+            _id: s._id.toString(),
+            createdAt: s.createdAt?.toISOString(),
+            updatedAt: s.updatedAt?.toISOString()
+        }));
+    } catch (error) {
+        console.error('Failed to fetch services:', error);
+        return [];
+    }
 }
 
 export default async function AdminPage({
@@ -28,10 +33,17 @@ export default async function AdminPage({
 }) {
     const resolvedParams = await searchParams;
     const tab = typeof resolvedParams.tab === 'string' ? resolvedParams.tab : 'dashboard';
-    const services = await getServices();
 
-    // Get real stats
-    const inquiryCount = await Inquiry.countDocuments({});
+    let services: any[] = [];
+    let inquiryCount = 0;
+
+    try {
+        services = await getServices();
+        inquiryCount = await Inquiry.countDocuments({});
+    } catch (error) {
+        console.error('Failed to fetch admin stats:', error);
+    }
+
     const totalServices = services.length;
 
     return (
