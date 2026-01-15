@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Prime Finance Hub
 
 This is a [Next.js](https://nextjs.org) project.
@@ -22,6 +21,4 @@ Make sure to configure your environment variables in `.env.local`:
 ```bash
 MONGODB_URI=mongodb://localhost:27017/prime-finance-hub
 ```
-=======
 # prime-finance-hub
->>>>>>> 72eb0ca216ed82d7d69c7cf5d814566c675524fe
