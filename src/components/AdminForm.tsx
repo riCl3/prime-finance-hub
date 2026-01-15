@@ -132,7 +132,9 @@ export default function AdminForm({ initialData, onCancel }: { initialData?: Par
             }
         } catch (error) {
             console.error(error);
-            alert('Error creating service');
+            console.error(error);
+            const msg = error instanceof Error ? error.message : 'Error creating service';
+            alert(`Failed: ${msg}`);
         } finally {
             setLoading(false);
         }

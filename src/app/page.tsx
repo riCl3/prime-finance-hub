@@ -11,7 +11,8 @@ import fs from 'fs';
 import path from 'path';
 
 // Force dynamic rendering
-export const dynamic = 'force-dynamic';
+// Use ISR for better performance
+export const revalidate = 60;
 
 async function getContent() {
   const dataFilePath = path.join(process.cwd(), 'public/data/content.json');

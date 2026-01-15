@@ -5,6 +5,9 @@ import { NextResponse } from 'next/server';
 export async function GET() {
     try {
         await dbConnect();
+        if (process.env.MONGODB_URI?.includes('localhost') && process.env.NODE_ENV === 'production') {
+            console.warn('⚠️ WARNING: Using localhost MongoDB URI in production!');
+        }
         const services = await Service.find({}).sort({ createdAt: -1 });
         return NextResponse.json({ success: true, data: services });
     } catch (error) {
