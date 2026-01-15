@@ -38,6 +38,7 @@ export default async function AdminPage({
     let inquiryCount = 0;
 
     try {
+        await dbConnect();
         services = await getServices();
         inquiryCount = await Inquiry.countDocuments({});
     } catch (error) {

@@ -19,7 +19,8 @@ export async function POST(req: Request) {
         const service = await Service.create(body);
         return NextResponse.json({ success: true, data: service }, { status: 201 });
     } catch (error) {
-        console.error(error);
-        return NextResponse.json({ success: false, error: 'Failed to create service' }, { status: 400 });
+        console.error("Service creation error:", error);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        return NextResponse.json({ success: false, error: errorMessage }, { status: 400 });
     }
 }

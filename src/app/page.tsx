@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import ProductSection from "@/components/ProductSection";
 import dbConnect from "@/lib/db";
 import Service from "@/models/Service";
 
 import Hero from "@/components/home/Hero";
 import FeaturedPostSection from "@/components/home/FeaturedPostSection";
+import Services from "@/components/home/Services";
+import Stats from "@/components/Stats";
 import fs from 'fs';
 import path from 'path';
 
@@ -40,10 +41,6 @@ async function getProducts() {
 export default async function Home() {
   const allProducts = await getProducts();
   const content = await getContent();
-
-  // Filter products by category
-  const loanProducts = allProducts.filter(p => p.category === 'Loans');
-  const insuranceProducts = allProducts.filter(p => p.category === 'Life Insurance');
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden bg-[#0B1120] text-slate-300 selection:bg-emerald-500/30">
@@ -85,45 +82,13 @@ export default async function Home() {
 
         <FeaturedPostSection post={content?.featuredPost} />
 
-        {/* Dynamic Loans Section */}
-        <ProductSection
-          title="Loan Solutions"
-          products={loanProducts}
-          category="Loans"
-          icon="💰"
-        />
-
-        {/* Dynamic Life Insurance Section */}
-        <ProductSection
-          title="Insurance Plans"
-          products={insuranceProducts}
-          category="Life Insurance"
-          icon="🛡️"
-        />
+        {/* Services Section (Loans & Insurance) */}
+        <div id="services">
+          <Services services={allProducts} />
+        </div>
 
         {/* Stats Section */}
-        <section className="py-20 border-t border-white/5 bg-white/[0.02]">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div>
-                <div className="text-4xl font-bold text-white mb-2">$500M+</div>
-                <div className="text-sm text-slate-400 uppercase tracking-wider">Processed</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-white mb-2">50k+</div>
-                <div className="text-sm text-slate-400 uppercase tracking-wider">Happy Users</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-white mb-2">99.9%</div>
-                <div className="text-sm text-slate-400 uppercase tracking-wider">Uptime</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold text-white mb-2">24/7</div>
-                <div className="text-sm text-slate-400 uppercase tracking-wider">Support</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Stats />
       </main>
 
       {/* Footer */}

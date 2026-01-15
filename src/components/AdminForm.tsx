@@ -105,7 +105,10 @@ export default function AdminForm({ initialData, onCancel }: { initialData?: any
                 body: JSON.stringify(cleanedData),
             });
 
-            if (!res.ok) throw new Error(isEditing ? 'Failed to update service' : 'Failed to create service');
+            const data = await res.json();
+            if (!res.ok || !data.success) {
+                throw new Error(data.error || (isEditing ? 'Failed to update service' : 'Failed to create service'));
+            }
 
             router.refresh();
 
