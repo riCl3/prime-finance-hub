@@ -29,8 +29,17 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  // Return cached connection if available
   if (cached.conn) {
+    console.log('♻️  Using cached database connection');
     return cached.conn;
+  }
+
+  // Check if MONGODB_URI is set
+  if (!MONGODB_URI) {
+    const error = new Error('MONGODB_URI is not defined in environment variables');
+    console.error('❌', error.message);
+    throw error;
   }
 
   if (!cached.promise) {
@@ -40,29 +49,45 @@ async function dbConnect() {
       socketTimeoutMS: 45000,
     };
 
-    cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
-      console.log("Successfully connected to MongoDB");
-      return mongoose.connection;
-    }).catch((error) => {
-      console.error("Error creating mongoose connection promise:", error);
-      throw error;
-    });
+    console.log('🔌 Attempting to connect to MongoDB...');
+
+    cached.promise = mongoose.connect(MONGODB_URI, opts)
+      .then((mongoose) => {
+        console.log("✅ Successfully connected to MongoDB");
+        console.log("📊 Database:", mongoose.connection.name);
+        return mongoose.connection;
+      })
+      .catch((error) => {
+        console.error("❌ MongoDB connection error:", error);
+
+        // Log specific error details
+        if (error.name === 'MongooseServerSelectionError') {
+          console.error('⚠️  Possible causes:');
+          console.error('   - MongoDB URI is incorrect');
+          console.error('   - MongoDB server is not reachable');
+          console.error('   - IP address not whitelisted in MongoDB Atlas');
+        }
+
+        // Reset promise so we can retry
+        cached.promise = null;
+        throw error;
+      });
   }
 
   try {
     cached.conn = await cached.promise;
+    console.log('✅ Database connection established');
   } catch (e) {
     cached.promise = null; // Reset promise so we can try again
-    console.error("Failed to establish MongoDB connection:", e);
-    // Depending on strictness, we might want to suppress the throw and return null to avoid crashing
-    // but typically a DB connection failure is critical. 
-    // However, the user asked to avoid 'Failed to fetch' (often client side) or server crashing.
-    // If we return null, the calling code must handle it.
-    // Let's rethrow for now but with the logging above, it's easier to debug.
-    throw e;
+    console.error("❌ Failed to establish MongoDB connection:", e);
+
+    // Provide helpful error message
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    throw new Error(`Database connection failed: ${errorMessage}`);
   }
 
   return cached.conn;
 }
 
 export default dbConnect;
+
