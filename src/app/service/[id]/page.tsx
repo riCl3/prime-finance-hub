@@ -9,6 +9,21 @@ import Link from 'next/link';
 import { Service as ServiceType } from '@/components/home/Services';
 import { notFound } from 'next/navigation';
 
+// Generate static pages for all services at build time
+export async function generateStaticParams() {
+    try {
+        await dbConnect();
+        const services = await Service.find({}).select('_id').lean();
+        return services.map(s => ({ id: s._id.toString() }));
+    } catch (error) {
+        console.error('Failed to generate static params:', error);
+        return [];
+    }
+}
+
+// Revalidate every 60 seconds (ISR)
+export const revalidate = 60;
+
 async function getService(id: string) {
     await dbConnect();
     const service = await Service.findById(id).lean();

@@ -40,8 +40,12 @@ export default async function AdminPage({
 
     try {
         await dbConnect();
-        services = await getServices();
-        inquiryCount = await Inquiry.countDocuments({});
+
+        // Fetch services and inquiry count in parallel for better performance
+        [services, inquiryCount] = await Promise.all([
+            getServices(),
+            Inquiry.countDocuments({})
+        ]);
     } catch (error) {
         console.error('Failed to fetch admin stats:', error);
     }

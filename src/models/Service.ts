@@ -42,6 +42,10 @@ const ServiceSchema: Schema = new Schema({
     discountPercentage: { type: Number, required: true }, // Calculated on save/front-end
 }, { timestamps: true });
 
+// Add indexes for faster queries
+ServiceSchema.index({ category: 1, createdAt: -1 });
+ServiceSchema.index({ type: 1 });
+
 // Prevent recompilation of model in dev mode
 const Service: Model<IService> = mongoose.models.Service || mongoose.model<IService>('Service', ServiceSchema);
 

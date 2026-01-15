@@ -3,6 +3,9 @@ import Footer from '@/components/Footer';
 import { Target, Users, Award, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
+// Cache this page for 1 hour (static content)
+export const revalidate = 3600;
+
 export default function AboutPage() {
     return (
         <div className="min-h-screen">

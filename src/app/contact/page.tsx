@@ -16,6 +16,9 @@ async function getContactData() {
     }
 }
 
+// Cache this page for 5 minutes
+export const revalidate = 300;
+
 export default async function ContactPage() {
     const data = await getContactData();
     const contact = data?.contactInfo || {
