@@ -3,7 +3,8 @@ import HeroEditor from '@/components/admin/HeroEditor';
 import FeaturedPostEditor from '@/components/admin/FeaturedPostEditor';
 import ContactEditor from '@/components/admin/ContactEditor';
 import dbConnect from '@/lib/db';
-import Service from '@/models/Service';
+import ServiceModel from '@/models/Service';
+import { Service } from '@/components/home/Services';
 import Inquiry from '@/models/Inquiry';
 import { LayoutDashboard, Users, ArrowUpRight, DollarSign } from 'lucide-react';
 
@@ -13,7 +14,7 @@ export const dynamic = 'force-dynamic';
 async function getServices() {
     try {
         await dbConnect();
-        const services = await Service.find({}).sort({ createdAt: -1 }).lean();
+        const services = await ServiceModel.find({}).sort({ createdAt: -1 }).lean();
         return services.map(s => ({
             ...s,
             _id: s._id.toString(),
@@ -34,7 +35,7 @@ export default async function AdminPage({
     const resolvedParams = await searchParams;
     const tab = typeof resolvedParams.tab === 'string' ? resolvedParams.tab : 'dashboard';
 
-    let services: any[] = [];
+    let services: Service[] = [];
     let inquiryCount = 0;
 
     try {

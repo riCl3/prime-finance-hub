@@ -1,22 +1,13 @@
 import {
-    Briefcase, Zap, Heart, Activity, TrendingUp, Shield, FileWarning, Wallet, CircleDollarSign, Check
+    Briefcase, Zap, Heart, Activity, TrendingUp, Shield, FileWarning, Wallet, CircleDollarSign, Check, LucideIcon
 } from 'lucide-react';
+import { Service } from '@/components/home/Services';
 
 interface ServiceCardProps {
-    service: {
-        _id: string;
-        title: string;
-        category: string;
-        type: string;
-        description: string;
-        benefits: string[];
-        actualPrice: number;
-        discountedPrice: number;
-        discountPercentage: number;
-    };
+    service: Service;
 }
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
     'Personal Loan': Wallet,
     'Business Loan': Briefcase,
     'Instant Loan': Zap,

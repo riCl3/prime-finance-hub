@@ -1,0 +1,20 @@
+
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/api/leads/route.ts:4:1
+[1m[31mModule not found[39m[22m: Can't resolve [32m'twilio'[39m
+[0m [90m 2 |[39m [36mimport[39m dbConnect [36mfrom[39m [32m'@/lib/db'[39m[33m;[39m
+ [90m 3 |[39m [36mimport[39m [33mLead[39m [36mfrom[39m [32m'@/models/Lead'[39m[33m;[39m
+[31m[1m>[22m[39m[90m 4 |[39m [36mimport[39m twilio [36mfrom[39m [32m'twilio'[39m[33m;[39m
+ [90m   |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
+ [90m 5 |[39m
+ [90m 6 |[39m [90m// Helper to generate 6-digit OTP[39m
+ [90m 7 |[39m [36mconst[39m generateOTP [33m=[39m () [33m=>[39m [33mMath[39m[33m.[39mfloor([35m100000[39m [33m+[39m [33mMath[39m[33m.[39mrandom() [33m*[39m [35m900000[39m)[33m.[39mtoString()[33m;[39m[0m
+
+
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+    at <unknown> (./src/app/api/leads/route.ts:4:1)
+    at <unknown> (https://nextjs.org/docs/messages/module-not-found)

@@ -3,11 +3,12 @@
 import { useState } from 'react';
 import AdminForm from '@/components/AdminForm';
 import ServiceList from '@/components/ServiceList';
+import { Service } from '@/components/home/Services';
 
-export default function ServiceManager({ services }: { services: any[] }) {
-    const [editingService, setEditingService] = useState<any | null>(null);
+export default function ServiceManager({ services }: { services: Service[] }) {
+    const [editingService, setEditingService] = useState<Service | null>(null);
 
-    const handleEdit = (service: any) => {
+    const handleEdit = (service: Service) => {
         setEditingService(service);
         // Scroll to form
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -27,7 +28,7 @@ export default function ServiceManager({ services }: { services: any[] }) {
             <div className="grid xl:grid-cols-[1.2fr_1fr] gap-8 items-start">
                 <section>
                     <AdminForm
-                        initialData={editingService}
+                        initialData={editingService || undefined}
                         onCancel={handleCancelEdit}
                         key={editingService ? editingService._id : 'new'} // proper reset on switch
                     />

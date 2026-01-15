@@ -28,7 +28,7 @@ async function testConnection() {
         await mongoose.connection.close();
         console.log('Connection closed.');
         process.exit(0);
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
         console.error('❌ Failed to connect to MongoDB:');
         console.error('Error Name:', error.name);
         console.error('Error Message:', error.message);

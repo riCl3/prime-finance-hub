@@ -41,8 +41,8 @@ export default function LeadCaptureModal({ isOpen, onClose, triggerUrl }: LeadCa
             // For demo purposes, we might alert the OTP if it's returned in debug mode
             if (data.debugOtp) console.log("Demo OTP:", data.debugOtp);
 
-        } catch (err: any) {
-            setError(err.message || 'Failed to send OTP');
+        } catch (err) {
+            setError((err as Error).message || 'Failed to send OTP');
         } finally {
             setLoading(false);
         }
@@ -69,8 +69,8 @@ export default function LeadCaptureModal({ isOpen, onClose, triggerUrl }: LeadCa
                 if (triggerUrl) router.push(triggerUrl);
             }, 2000);
 
-        } catch (err: any) {
-            setError(err.message || 'Invalid OTP');
+        } catch (err) {
+            setError((err as Error).message || 'Invalid OTP');
         } finally {
             setLoading(false);
         }

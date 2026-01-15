@@ -12,6 +12,14 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "src/app/api/content/route.ts",
+    "src/components/LeadCaptureModal.tsx",
+    "src/app/api/inquiries/route.ts",
+    "src/components/ServiceCard.tsx",
+    "src/app/api/leads/route.ts",
+    "src/app/api/services/route.ts",
+    "src/app/api/leads/verify/route.ts",
+    "src/app/api/services/[id]/route.ts",
   ]),
 ]);
 

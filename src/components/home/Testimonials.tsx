@@ -77,7 +77,7 @@ export default function Testimonials() {
                                 fontStyle: 'italic',
                                 lineHeight: 1.7
                             }}>
-                                "{testimonial.content}"
+                                &quot;{testimonial.content}&quot;
                             </p>
 
                             <div style={{

@@ -3,13 +3,20 @@
 import { useState } from 'react';
 import { Send, Loader2 } from 'lucide-react';
 
-export default function InquiryForm() {
+interface InquiryFormProps {
+    serviceId?: string;
+    serviceName?: string;
+}
+
+export default function InquiryForm({ serviceId, serviceName }: InquiryFormProps = {}) {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         phone: '',
-        message: ''
+        message: '',
+        serviceId: serviceId || '',
+        serviceName: serviceName || ''
     });
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -21,7 +28,14 @@ export default function InquiryForm() {
             await new Promise(resolve => setTimeout(resolve, 1500));
 
             // Reset form
-            setFormData({ name: '', email: '', phone: '', message: '' });
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+                serviceId: serviceId || '',
+                serviceName: serviceName || ''
+            });
             alert('Message sent successfully! We will get back to you soon.');
         } catch (error) {
             alert('Failed to send message.');

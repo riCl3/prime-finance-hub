@@ -6,6 +6,7 @@ import dbConnect from '@/lib/db';
 import Service from '@/models/Service';
 import { Check, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import { Service as ServiceType } from '@/components/home/Services';
 import { notFound } from 'next/navigation';
 
 async function getService(id: string) {
@@ -127,7 +128,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {relatedServices.map((relatedService) => (
                                 <Link key={relatedService._id} href={`/service/${relatedService._id}`} className="block">
-                                    <ServiceCard service={relatedService as any} />
+                                    <ServiceCard service={relatedService as ServiceType} />
                                 </Link>
                             ))}
                         </div>

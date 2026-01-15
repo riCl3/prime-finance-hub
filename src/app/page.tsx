@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+
 import dbConnect from "@/lib/db";
 import Service from "@/models/Service";
 
@@ -32,8 +32,8 @@ async function getProducts() {
       createdAt: p.createdAt?.toISOString(),
       updatedAt: p.updatedAt?.toISOString()
     }));
-  } catch (error) {
-    console.error('Failed to fetch products (DB Connection Error):', error);
+  } catch {
+    console.error('Failed to fetch products (DB Connection Error)');
     return [];
   }
 }

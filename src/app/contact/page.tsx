@@ -11,7 +11,7 @@ async function getContactData() {
         if (!fs.existsSync(filePath)) return null;
         const fileContents = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(fileContents);
-    } catch (e) {
+    } catch {
         return null;
     }
 }
@@ -40,7 +40,7 @@ export default async function ContactPage() {
                 <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span className="text-sm font-medium text-emerald-300">We're here to help</span>
+                        <span className="text-sm font-medium text-emerald-300">We&apos;re here to help</span>
                     </div>
                     <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
                         Get In <span className="text-gradient">Touch</span>

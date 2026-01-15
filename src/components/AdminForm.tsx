@@ -11,7 +11,9 @@ const SERVICE_TYPES_BY_CATEGORY: Record<string, string[]> = {
     'Life Insurance': ['Life Insurance', 'Health Insurance', 'General Insurance', 'Mutual Fund', 'Cibil Recover']
 };
 
-export default function AdminForm({ initialData, onCancel }: { initialData?: any, onCancel?: () => void }) {
+import { Service } from '@/components/home/Services';
+
+export default function AdminForm({ initialData, onCancel }: { initialData?: Partial<Service>, onCancel?: () => void }) {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 

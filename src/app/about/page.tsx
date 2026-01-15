@@ -26,12 +26,12 @@ export default function AboutPage() {
                             We recognized that traditional banking often created unnecessary barriers, and we set out to change that.
                         </p>
                         <p>
-                            Over the past 15 years, we've grown from a small team of financial enthusiasts to a trusted institution serving over 10,000
+                            Over the past 15 years, we&apos;ve grown from a small team of financial enthusiasts to a trusted institution serving over 10,000
                             satisfied customers across India. Our success is built on three pillars: transparency, speed, and personalized service.
                         </p>
                         <p>
                             Today, we offer comprehensive loan and insurance solutions designed to meet the diverse needs of modern India.
-                            Whether you're a first-time borrower or a seasoned investor, we're here to guide you every step of the way.
+                            Whether you&apos;re a first-time borrower or a seasoned investor, we&apos;re here to guide you every step of the way.
                         </p>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
                     <div className="glass-panel p-8">
                         <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
                         <p className="text-gray-400 leading-relaxed">
-                            To become India's most trusted and innovative financial services platform, recognized for our customer-centric
+                            To become India&apos;s most trusted and innovative financial services platform, recognized for our customer-centric
                             approach, technological excellence, and unwavering commitment to financial inclusion. We envision a future where
                             every Indian has access to quality financial products.
                         </p>
@@ -101,7 +101,7 @@ export default function AboutPage() {
                 <div className="glass-panel p-12 text-center">
                     <h2 className="text-3xl font-bold text-white mb-4">Join Our Journey</h2>
                     <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
-                        Be part of our growing community of satisfied customers. Let's build your financial future together.
+                        Be part of our growing community of satisfied customers. Let&apos;s build your financial future together.
                     </p>
                     <Link href="/contact" className="btn-primary inline-flex items-center gap-2">
                         Get Started Today

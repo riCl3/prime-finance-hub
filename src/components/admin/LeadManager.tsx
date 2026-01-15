@@ -18,20 +18,20 @@ export default function LeadManager() {
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
+        const fetchLeads = async () => {
+            try {
+                const res = await fetch('/api/leads');
+                const data = await res.json();
+                setLeads(data);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+            }
+        };
+
         fetchLeads();
     }, []);
-
-    const fetchLeads = async () => {
-        try {
-            const res = await fetch('/api/leads');
-            const data = await res.json();
-            setLeads(data);
-            setLoading(false);
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
-        }
-    };
 
     const filteredLeads = leads.filter(lead =>
         lead.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

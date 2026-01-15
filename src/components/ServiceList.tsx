@@ -3,7 +3,9 @@
 import { Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function ServiceList({ services, onEdit }: { services: any[], onEdit: (service: any) => void }) {
+import { Service } from '@/components/home/Services';
+
+export default function ServiceList({ services, onEdit }: { services: Service[], onEdit: (service: Service) => void }) {
     const router = useRouter();
 
     const handleDelete = async (id: string) => {
@@ -77,7 +79,7 @@ export default function ServiceList({ services, onEdit }: { services: any[], onE
                             <div className="text-right mr-4 hidden sm:block">
                                 <div className="text-xs text-slate-500 mb-1">Created</div>
                                 <div className="text-sm text-slate-400 font-mono">
-                                    {new Date(service.createdAt).toLocaleDateString()}
+                                    {service.createdAt ? new Date(service.createdAt).toLocaleDateString() : 'N/A'}
                                 </div>
                             </div>
 

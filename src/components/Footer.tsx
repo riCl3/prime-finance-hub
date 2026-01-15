@@ -9,7 +9,7 @@ async function getFooterData() {
         if (!fs.existsSync(filePath)) return null;
         const fileContents = fs.readFileSync(filePath, 'utf8');
         return JSON.parse(fileContents);
-    } catch (e) {
+    } catch {
         return null;
     }
 }

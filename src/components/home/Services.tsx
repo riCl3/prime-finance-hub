@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Check, ArrowRight } from 'lucide-react';
 
-interface Service {
+export interface Service {
     _id: string;
     title: string;
     category: string;
@@ -13,6 +13,8 @@ interface Service {
     actualPrice: number;
     discountedPrice: number;
     discountPercentage: number;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export default function Services({ services }: { services: Service[] }) {

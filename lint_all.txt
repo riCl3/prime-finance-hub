@@ -1,0 +1,43 @@
+
+> temp_app@0.1.0 lint
+> eslint
+
+
+D:\Prime Finance Hub\src\app\api\inquiries\route.ts
+  22:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\app\api\leads\route.ts
+  61:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  89:14  warning  'error' is defined but never used         @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\app\api\services\route.ts
+  10:14  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\app\contact\page.tsx
+  14:14  warning  'e' is defined but never used                                    @typescript-eslint/no-unused-vars
+  43:82  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+D:\Prime Finance Hub\src\app\page.tsx
+  2:10  warning  'ChevronRight' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\app\service\[id]\page.tsx
+  130:77  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Prime Finance Hub\src\components\AdminForm.tsx
+  14:78  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Prime Finance Hub\src\components\Footer.tsx
+  12:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\components\InquiryForm.tsx
+  26:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\components\ServiceCard.tsx
+  19:31  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+D:\Prime Finance Hub\src\components\ServiceList.tsx
+  6:71  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  6:96  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 14 problems (7 errors, 7 warnings)
+

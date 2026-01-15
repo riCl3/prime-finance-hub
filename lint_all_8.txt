@@ -1,0 +1,13 @@
+
+> temp_app@0.1.0 lint
+> eslint
+
+
+D:\Prime Finance Hub\src\components\Footer.tsx
+  12:14  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+D:\Prime Finance Hub\src\components\InquiryForm.tsx
+  40:18  warning  'error' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 2 problems (0 errors, 2 warnings)
+
